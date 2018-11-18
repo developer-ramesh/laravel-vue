@@ -51,7 +51,7 @@
             let app = this;
             let id = app.$route.params.id;
             app.companyId = id;
-            axios.get('/api/v1/companies/' + id)
+            axios.get('/laravel-vue/public/api/v1/companies/' + id)
                 .then(function (resp) {
                     app.company = resp.data;
                 })
@@ -75,7 +75,7 @@
                 event.preventDefault();
                 var app = this;
                 var newCompany = app.company;
-                axios.patch('/api/v1/companies/' + app.companyId, newCompany)
+                axios.patch('/laravel-vue/public/api/v1/companies/' + app.companyId, newCompany)
                     .then(function (resp) {
                         app.$router.replace('/');
                     })

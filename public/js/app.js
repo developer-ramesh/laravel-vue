@@ -45785,6 +45785,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -45794,8 +45795,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     mounted: function mounted() {
         var app = this;
-        axios.get('/api/v1/companies').then(function (resp) {
+        axios.get('/laravel-vue/public/api/v1/companies').then(function (resp) {
             app.companies = resp.data;
+            console.log(resp);
         }).catch(function (resp) {
             console.log(resp);
             alert("Could not load companies");
@@ -45806,7 +45808,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         deleteEntry: function deleteEntry(id, index) {
             if (confirm("Do you really want to delete it?")) {
                 var app = this;
-                axios.delete('/api/v1/companies/' + id).then(function (resp) {
+                axios.delete('/laravel-vue/public/api/v1/companies/' + id).then(function (resp) {
                     app.companies.splice(index, 1);
                 }).catch(function (resp) {
                     alert("Could not delete company");
@@ -46054,7 +46056,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             event.preventDefault();
             var app = this;
             var newCompany = app.company;
-            axios.post('/api/v1/companies', newCompany).then(function (resp) {
+            axios.post('/laravel-vue/public/api/v1/companies', newCompany).then(function (resp) {
                 app.$router.push({ path: '/' });
             }).catch(function (resp) {
                 console.log(resp);
@@ -46356,7 +46358,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         var app = this;
         var id = app.$route.params.id;
         app.companyId = id;
-        axios.get('/api/v1/companies/' + id).then(function (resp) {
+        axios.get('/laravel-vue/public/api/v1/companies/' + id).then(function (resp) {
             app.company = resp.data;
         }).catch(function () {
             alert("Could not load your company");
@@ -46379,7 +46381,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             event.preventDefault();
             var app = this;
             var newCompany = app.company;
-            axios.patch('/api/v1/companies/' + app.companyId, newCompany).then(function (resp) {
+            axios.patch('/laravel-vue/public/api/v1/companies/' + app.companyId, newCompany).then(function (resp) {
                 app.$router.replace('/');
             }).catch(function (resp) {
                 console.log(resp);

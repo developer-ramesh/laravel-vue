@@ -40,6 +40,7 @@
             </div>
         </div>
     </div>
+
 </template>
 
 <script>
@@ -51,9 +52,10 @@
         },
         mounted() {
             var app = this;
-            axios.get('/api/v1/companies')
+            axios.get('/laravel-vue/public/api/v1/companies')
                 .then(function (resp) {
                     app.companies = resp.data;
+                    console.log(resp);
                 })
                 .catch(function (resp) {
                     console.log(resp);
@@ -64,7 +66,7 @@
             deleteEntry(id, index) {
                 if (confirm("Do you really want to delete it?")) {
                     var app = this;
-                    axios.delete('/api/v1/companies/' + id)
+                    axios.delete('/laravel-vue/public/api/v1/companies/' + id)
                         .then(function (resp) {
                             app.companies.splice(index, 1);
                         })
