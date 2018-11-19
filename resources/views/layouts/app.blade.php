@@ -71,6 +71,8 @@
             </div>
         </nav>
 
+        <a>App layout</a>
+        
         @yield('content')
     </div>
 
